@@ -7,9 +7,13 @@ const Expenses = ({ expenses, onSelectYearToFilter }) => {
   return (
     <Card className="expenses">
       <ExpensesFilter onSelect={onSelectYearToFilter} />
-      {expenses.map((expense) => (
-        <ExpenseItem key={expense.id} expense={expense} />
-      ))}
+      {expenses.length === 0 ? (
+        <p>No expenses found.</p>
+      ) : (
+        expenses.map(expense => (
+          <ExpenseItem key={expense.id} expense={expense} />
+        ))
+      )}
     </Card>
   );
 };
