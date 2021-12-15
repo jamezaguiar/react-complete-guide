@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { isEmpty } from './utils/stringUtils';
+import { hasText } from './utils/stringUtils';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
@@ -33,7 +33,7 @@ const App = () => {
   ]);
 
   const expenses = useMemo(() => {
-    if (isEmpty(filterYear)) return allExpenses;
+    if (!hasText(filterYear)) return allExpenses;
 
     return allExpenses.filter(
       expense => expense.date.getFullYear().toString() === filterYear

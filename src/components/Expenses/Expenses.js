@@ -1,19 +1,13 @@
 import Card from '../UI/Card';
-import ExpenseItem from './ExpenseItem';
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesList from './ExpensesList';
 import './Expenses.css';
 
 const Expenses = ({ expenses, onSelectYearToFilter }) => {
   return (
     <Card className="expenses">
       <ExpensesFilter onSelect={onSelectYearToFilter} />
-      {expenses.length === 0 ? (
-        <p>No expenses found.</p>
-      ) : (
-        expenses.map(expense => (
-          <ExpenseItem key={expense.id} expense={expense} />
-        ))
-      )}
+      <ExpensesList expenses={expenses} />
     </Card>
   );
 };
